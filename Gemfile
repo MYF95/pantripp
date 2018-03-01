@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.0'
 gem 'haml'
+gem 'haml-rails', '~> 1.0'
 gem 'pry'
 
 
