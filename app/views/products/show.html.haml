@@ -1,0 +1,15 @@
+- provide(:title, @product.name)
+
+%div.jumbotron
+  %h1 #{@product.name}
+  %ul
+    %li Info: #{@product.info}
+    %li Brand: #{@product.brand}
+    %li Ingredients: #{@product.ingredients}
+    %li Shelf life (in days): #{@product.shelf}
+
+  =link_to "Edit product", edit_product_path
+  %br
+  =link_to "Delete product", @product, method: :delete, data: { confirm: "Are you sure?" }
+  %br
+  =link_to "Back to products", products_path

@@ -1,0 +1,5 @@
+%div.jumbotron
+  %h2 Look at all those products
+  %ul.product-list
+  - @product.each do |product|
+    %li= link_to "Product name: #{product.name}", product_path(product)

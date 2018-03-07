@@ -10,10 +10,11 @@ Rails.application.routes.draw do
     get '/logout', to: 'users/sessions#destroy'
   end
 
-  root to: 'static_pages#home'
-  get '/help', to: 'static_pages#help'
-  get '/about', to: 'static_pages#about'
-  get 'users/:id', to: 'users#show'
+  root                    to: 'static_pages#home'
+  get '/help',            to: 'static_pages#help'
+  get '/about',           to: 'static_pages#about'
+  get 'users/:id',        to: 'users#show'
 
   resources :users
+  resources :products
 end
