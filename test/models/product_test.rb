@@ -3,7 +3,6 @@ require 'test_helper'
 class ProductTest < ActiveSupport::TestCase
   def setup
     @product = build(:product)
-
   end
 
   test 'should be valid' do
@@ -36,12 +35,12 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test 'name should not be too long' do
-    @product.name = "a"*31
+    @product.name = "a"*51
     assert_not @product.valid?
   end
 
   test 'brand should not be too long' do
-    @product.brand = "a"*31
+    @product.brand = "a"*51
     assert_not @product.valid?
   end
 
