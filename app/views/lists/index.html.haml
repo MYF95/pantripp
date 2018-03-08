@@ -1,0 +1,7 @@
+- provide(:title, 'All lists')
+
+%div.jumbotron
+  %h2 All the lists
+  %ul.product-list
+  - @list.each do |list|
+    %li= link_to "List name: #{list.name}", list_path(list)

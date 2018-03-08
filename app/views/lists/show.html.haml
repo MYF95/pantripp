@@ -1,0 +1,14 @@
+- provide(:title, @list.name)
+
+%div.jumbotron
+  %h1 #{@list.name}
+  %h1= "Capacity: #{@list.capacity}"
+  %h1= "Location: #{@list.location}"
+
+
+  -if user_signed_in?
+    =link_to 'Edit List Properties', edit_list_path
+    %br
+    =link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' }
+    %br
+  =link_to 'Back to lists', lists_path

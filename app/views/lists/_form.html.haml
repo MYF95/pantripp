@@ -1,0 +1,19 @@
+= render 'shared/error_messages', object: f.object
+
+.field
+  = f.label :name
+  %br/
+  = f.text_field :name, autofocus: true
+
+.field
+  = f.label :capacity
+  %br/
+  = f.number_field :capacity
+
+.field
+  = f.label :location
+  %br/
+  = f.text_field :location
+
+.actions
+  = f.submit yield(:button_text)

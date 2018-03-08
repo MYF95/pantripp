@@ -9,7 +9,7 @@ class ProductCreationTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get new_product_path
     assert_difference 'Product.count', 1 do
-      post products_path, params: { product: { name: "Ponsan", brand: "doge", ingredients: "doge", info: "not edible but almost", shelf: "50" }}
+      post products_path, params: { product: { name: 'Ponsan', brand: 'doge', ingredients: 'doge', info: 'not edible but almost', shelf: '50' }}
     end
     follow_redirect!
     assert_template 'products/show'
@@ -20,7 +20,7 @@ class ProductCreationTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get new_product_path
     assert_no_difference 'Product.count' do
-      post products_path, params: { product: { name: "", brand: "", ingredients: "", info: "not edible but almost", shelf: "" }}
+      post products_path, params: { product: { name: '', brand: '', ingredients: '', info: 'not edible but almost', shelf: '' }}
     end
     assert_template'products/new'
     assert_select 'div.alert', 'The form contains 4 errors.'

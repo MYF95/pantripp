@@ -9,8 +9,8 @@
     %li Shelf life (in days): #{@product.shelf}
 
   -if user_signed_in?
-    =link_to "Edit product", edit_product_path
+    =link_to 'Edit product', edit_product_path
     %br
-    =link_to "Delete product", @product, method: :delete, data: { confirm: "Are you sure?" }
+    =link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' }
     %br
-  =link_to "Back to products", products_path
+  =link_to 'Back to products', products_path

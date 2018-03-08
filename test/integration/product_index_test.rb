@@ -19,7 +19,6 @@ class ProductIndexTest < ActionDispatch::IntegrationTest
   test 'index as logged in user' do
     log_in_as(@user)
     get products_path
-    puts @products
     assert_select 'a', text: '+ Add to my list', count: @products.count
   end
 
