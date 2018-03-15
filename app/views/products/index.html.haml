@@ -1,9 +1,13 @@
 - provide(:title, 'All Products')
 
 %div.jumbotron
-  %h2 Look at all those products
-  %ul.product-list
-  - @product.each do |product|
-    %li= link_to "Product name: #{product.name}", product_path(product)
-    - if user_signed_in?
-      = link_to('+ Add to a list', '#')
+  %h2 Products
+  %div.row
+    %ul.product-list
+    - @product.each do |product|
+      %div.col-md-4
+      %li
+        =link_to "Product name: #{product.name}", product_path(product)
+        - if user_signed_in?
+          =link_to '+ Add to a list', '#', class: 'btn btn-primary'
+

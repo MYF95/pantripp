@@ -19,6 +19,7 @@ gem 'haml'
 gem 'haml-rails', '~> 1.0'
 gem 'pry'
 gem 'jquery-rails', '4.3.1'
+gem 'faker'
 
 
 
