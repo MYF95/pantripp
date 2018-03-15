@@ -1,0 +1,3 @@
+= form_for(current_user.userlists.find_by(user_id: current_user.id, list_id: @list.id), html: { method: :delete }) do |f|
+  = hidden_field_tag :user_id, current_user.id
+  = f.submit 'Remove from my list', class: 'btn btn-primary'

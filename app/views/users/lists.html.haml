@@ -1,0 +1,8 @@
+- provide(:title, 'Your lists')
+
+%div.jumbotron
+  %h1 Here are all of your lists
+  %h2= "You currently have #{pluralize(@user.lists.count, 'list')}"
+  %ul.userlist
+    - @user.lists.each do |list|
+      %li= link_to "#{list.name}", list_path(list)

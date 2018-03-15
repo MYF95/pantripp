@@ -15,7 +15,16 @@ Rails.application.routes.draw do
   get '/about',           to: 'static_pages#about'
   get 'users/:id',        to: 'users#show'
 
-  resources :users
+  resources :users do
+    collection do
+      get '/:id/lists', to: 'users#lists', as: :lists
+    end
+  end
   resources :products
-  resources :lists
+  resources :lists do
+    collection do
+      get '/:id/users', to: 'lists#users', as: :users
+    end
+  end
+  resources :userlists, only: [:create, :destroy]
 end

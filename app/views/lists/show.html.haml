@@ -1,11 +1,15 @@
 - provide(:title, @list.name)
 
 %div.jumbotron
+
   %h1 #{@list.name}
   %h1= "Capacity: #{@list.capacity}"
   %h1= "Location: #{@list.location}"
 
+  = render 'add_list'
 
+  =link_to 'Users in this list', users_lists_path(@list)
+  %br
   -if user_signed_in?
     =link_to 'Edit List Properties', edit_list_path
     %br

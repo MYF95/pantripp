@@ -39,4 +39,5 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/sessions/new'
   end
+
 end
