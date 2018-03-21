@@ -5,5 +5,6 @@ class UsersController < ApplicationController
 
   def lists
     @user = User.find(params[:id])
+    @users = @user.lists.paginate(page: params[:page], per_page: 9)
   end
 end

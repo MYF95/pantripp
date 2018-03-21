@@ -1,7 +1,12 @@
 - provide(:title, 'All lists')
 
 %div.jumbotron
-  %h1 All the lists
-  %ul.product-list
-  - @list.each do |list|
-    %li= link_to "List name: #{list.name}", list_path(list)
+  %h2 All the lists
+  %ul.list-lists
+  - @lists.each_slice(3) do |groups|
+    %div.row
+      - groups.each do |list|
+        %div.col-sm-6.col-lg-4.square
+          %div.list-square-content
+            %li= link_to "List name: #{list.name}", list_path(list)
+  = will_paginate

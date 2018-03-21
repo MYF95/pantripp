@@ -44,7 +44,7 @@ h1 {
 }
 
 h2 {
-  font-size: 3em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -56,6 +56,10 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
   text-align: center;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* header */
@@ -79,6 +83,7 @@ p {
 /* Profile */
 
 .profile {
+  text-align: center;
 }
 
 /* forms */
@@ -125,4 +130,51 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/* products */
+
+.square {
+  float: left;
+  position: relative;
+  width: 30%;
+  margin: 1.66%;
+  overflow: hidden;
+  background-color: lightblue;
+}
+
+.product-square-content {
+  text-align: center;
+  margin-top: 20%;
+  margin-bottom: 30%;
+  a#product {
+    padding: 10%;
+    display: block;
+  }
+  a#product:hover {
+    background-color: sandybrown;
+  }
+}
+
+.list-square-content {
+  text-align: center;
+  margin-top: 35%;
+  margin-bottom: 35%;
+  a {
+    padding: 10%;
+    display: block;
+  }
+  a:hover {
+    background-color: sandybrown;
+  }
+}
+
+.product-button {
+  margin: 10%;
+}
+
+/* lists */
+
+.my-list-square {
+  background-color: lightcoral;
 }

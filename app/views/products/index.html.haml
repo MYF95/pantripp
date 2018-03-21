@@ -1,13 +1,18 @@
 - provide(:title, 'All Products')
 
 %div.jumbotron
-  %h2 Products
-  %div.row
-    %ul.product-list
-    - @product.each do |product|
-      %div.col-md-4
-      %li
-        =link_to "Product name: #{product.name}", product_path(product)
-        - if user_signed_in?
-          =link_to '+ Add to a list', '#', class: 'btn btn-primary'
-
+  %div.container
+    %h2 Products
+    %div.product-list
+      %ul
+      - @products.each_slice(3) do |groups|
+        %div.row
+          -groups.each do |product|
+            %div.col-sm-6.col-lg-4.square
+              %div.product-square-content
+                %li
+                  =link_to "Product name: #{product.name}", product_path(product), id: 'product'
+                  - if user_signed_in?
+                    %div.product-button
+                      =link_to '+ Add to a list', '#', class: 'btn btn-primary'
+      = will_paginate

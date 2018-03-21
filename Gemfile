@@ -20,6 +20,7 @@ gem 'haml-rails', '~> 1.0'
 gem 'pry'
 gem 'jquery-rails', '4.3.1'
 gem 'faker'
+gem 'will_paginate', '~> 3.1.0'
 
 
 

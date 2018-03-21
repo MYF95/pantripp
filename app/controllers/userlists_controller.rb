@@ -5,7 +5,6 @@ class UserlistsController < ApplicationController
 
   def create
     @userlist = @user.userlists.new(list: @list)
-    # @userlist = Userlist.new(user: @user, list: @list)
     if @userlist.save
       flash[:info] = 'List added to your lists'
       redirect_to lists_users_path(@user)

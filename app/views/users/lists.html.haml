@@ -3,6 +3,11 @@
 %div.jumbotron
   %h1 Here are all of your lists
   %h2= "You currently have #{pluralize(@user.lists.count, 'list')}"
-  %ul.userlist
-    - @user.lists.order(:name).each do |list|
-      %li= link_to "#{list.name}", list_path(list)
+  %ul
+    - @users.order(:name).each_slice(3) do |groups|
+      %div.row
+        -groups.each do |list|
+          %div.col-sm-6.col-lg-4.square.my-list-square
+            %div.list-square-content
+              %li= link_to "#{list.name}", list_path(list)
+    = will_paginate
