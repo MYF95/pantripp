@@ -13,9 +13,13 @@
         %li
           = link_to "#{product.name}", product_path(product)
           = "Quantity: x#{@list.amount(product)}"
+          = render 'remove_product', product: product
 
+
+  =link_to 'Add products', products_path, class: 'btn btn-primary'
+  %br
   = render 'add_list'
-
+  %br
   =link_to 'Users in this list', users_lists_path(@list)
   %br
   -if user_signed_in?

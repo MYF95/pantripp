@@ -7,7 +7,7 @@ class UserlistsController < ApplicationController
     @userlist = @user.userlists.new(list: @list)
     if @userlist.save
       flash[:info] = 'List added to your lists'
-      redirect_to lists_users_path(@user)
+      redirect_to users_lists_path(@user)
     else
       redirect_to root_path
     end
@@ -17,7 +17,7 @@ class UserlistsController < ApplicationController
     @userlist = Userlist.find(params[:id])
     if @userlist.destroy
       flash[:info] = 'List removed from your lists'
-      redirect_to lists_users_path(@user)
+      redirect_to users_lists_path(@user)
     else
       flash[:error] = 'Something went wrong'
       redirect_to root_path
