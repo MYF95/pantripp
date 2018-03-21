@@ -1,6 +1,18 @@
 - provide(:title, 'Adding product to list')
 
 %div.jumbotron
+
+  - if current_user.lists.present?
+    %h2 Add to my lists
+    - @userlist.each_slice(3) do |groups|
+      %div.row
+        -groups.each do |list|
+          %div.col-sm-6.col-lg-4.square
+            %div.list-square-content
+              %li= "List name: #{list.name}"
+              = render 'lists/product_partials/add_product', list: list
+    = will_paginate @userlist, :param_name => :my_list_page
+
   %h2 Add to a list
   %ul.list-lists
   - @lists.each_slice(3) do |groups|
@@ -9,6 +21,6 @@
         %div.col-sm-6.col-lg-4.square
           %div.list-square-content
             %li= "List name: #{list.name}"
-            = render 'add_product', list: list
-  = will_paginate
+            = render 'lists/product_partials/add_product', list: list
+  = will_paginate @lists, :param_name => :lists_page
 

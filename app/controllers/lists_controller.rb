@@ -54,7 +54,8 @@ class ListsController < ApplicationController
 
   def products
     @product = Product.find(params[:product_id])
-    @lists = List.paginate(page: params[:page], per_page: 9)
+    @lists = List.paginate(page: params[:lists_page], per_page: 9)
+    @userlist = current_user.lists.paginate(page: params[:my_list_page], per_page: 3)
   end
 
   private

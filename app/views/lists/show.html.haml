@@ -13,16 +13,16 @@
         %li
           = link_to "#{product.name}", product_path(product)
           = "Quantity: x#{@list.amount(product)}"
-          = render 'remove_product', product: product
+          = render 'lists/product_partials/remove_product', product: product
 
 
-  =link_to 'Add products', products_path, class: 'btn btn-primary'
-  %br
-  = render 'add_list'
-  %br
   =link_to 'Users in this list', list_of_users_path(@list)
   %br
   -if user_signed_in?
+    =link_to 'Add products', products_path, class: 'btn btn-primary'
+    %br
+    = render 'add_list'
+    %br
     =link_to 'Edit List Properties', edit_list_path
     %br
     =link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' }

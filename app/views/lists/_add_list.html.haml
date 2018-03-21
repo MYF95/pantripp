@@ -1,6 +1,6 @@
 -if user_signed_in?
   %div.follow_form
     - if current_user.lists.include?(@list)
-      = render 'delete'
+      = render 'lists/user_partials/delete'
     - else
-      = render 'add'
+      = render 'lists/user_partials/add'
