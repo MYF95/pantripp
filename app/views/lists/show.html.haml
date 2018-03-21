@@ -6,6 +6,14 @@
   %h1= "Capacity: #{@list.capacity}"
   %h1= "Location: #{@list.location}"
 
+  %h2 Products in this list
+  %div.productlist
+    %ul
+      - @list.products.each do |product|
+        %li
+          = link_to "#{product.name}", product_path(product)
+          = "Quantity: x#{@list.amount(product)}"
+
   = render 'add_list'
 
   =link_to 'Users in this list', users_lists_path(@list)
