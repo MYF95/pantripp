@@ -14,5 +14,5 @@
                   =link_to "Product name: #{product.name}", product_path(product), id: 'product'
                   - if user_signed_in?
                     %div.product-button
-                      =link_to '+ Add to a list', '#', class: 'btn btn-primary'
+                      =link_to '+ Add to a list', products_lists_path(product), class: 'btn btn-primary'
       = will_paginate

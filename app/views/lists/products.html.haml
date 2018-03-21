@@ -1,0 +1,14 @@
+- provide(:title, 'Adding product to list')
+
+%div.jumbotron
+  %h2 Add to a list
+  %ul.list-lists
+  - @lists.each_slice(3) do |groups|
+    %div.row
+      - groups.each do |list|
+        %div.col-sm-6.col-lg-4.square
+          %div.list-square-content
+            %li= "List name: #{list.name}"
+            = render 'add_product', list: list
+  = will_paginate
+

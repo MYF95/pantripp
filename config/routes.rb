@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   get '/about',           to: 'static_pages#about'
   get 'users/:id',        to: 'users#show'
 
-  get '/:id/lists', to: 'users#lists', as: :users_lists
-  get '/:id/users', to: 'lists#users', as: :lists_users
+  get '/:user_id/lists', to: 'users#lists', as: :user_list # ID is the ID of the user
+  get '/:list_id/users', to: 'lists#users', as: :list_of_users # ID is the ID of the list
+  get '/:product_id/products', to: 'lists#products', as: :products_lists # ID is the product ID to add to a list
 
   resources :users
   resources :products

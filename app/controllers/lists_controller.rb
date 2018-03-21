@@ -49,7 +49,12 @@ class ListsController < ApplicationController
   end
 
   def users
-    @list = List.find(params[:id])
+    @list = List.find(params[:list_id])
+  end
+
+  def products
+    @product = Product.find(params[:product_id])
+    @lists = List.paginate(page: params[:page], per_page: 9)
   end
 
   private

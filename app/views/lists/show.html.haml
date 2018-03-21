@@ -20,7 +20,7 @@
   %br
   = render 'add_list'
   %br
-  =link_to 'Users in this list', users_lists_path(@list)
+  =link_to 'Users in this list', list_of_users_path(@list)
   %br
   -if user_signed_in?
     =link_to 'Edit List Properties', edit_list_path
