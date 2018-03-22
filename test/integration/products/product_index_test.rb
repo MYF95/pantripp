@@ -17,9 +17,11 @@ class ProductIndexTest < ActionDispatch::IntegrationTest
   end
 
   test 'index as logged in user' do
+    get products_path
+    assert_select 'a', text: '+ Add to a list', count: 0
     log_in_as(@user)
     get products_path
-    assert_select 'a', text: '+ Add to a list', count: @products.count
+    assert_select 'a', text: '+ Add to a list', count: @products.count # Should add pagination in consideration
   end
 
 end
