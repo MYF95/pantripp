@@ -13,6 +13,12 @@ class ListEditTest < ActionDispatch::IntegrationTest
     patch list_path(@list), params: { list: { name: '' }}
     assert_template 'lists/edit'
     assert_select 'div.alert', 'The form contains 1 error.'
+    patch list_path(@list), params: { list: { name: '', capacity: -10 }}
+    assert_template 'lists/edit'
+    assert_select 'div.alert', 'The form contains 2 errors.'
+    patch list_path(@list), params: { list: { name: '', capacity: 100, location: '' }}
+    assert_template 'lists/edit'
+    assert_select 'div.alert', 'The form contains 2 errors.'
   end
 
   test 'successful edit' do

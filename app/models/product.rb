@@ -5,5 +5,5 @@ class Product < ApplicationRecord
   validates :brand, presence: true, length: { maximum: 50}
   validates :ingredients, presence: true
   validates :info, presence: true
-  validates :shelf, presence: true
+  validates :shelf, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0}
 end

@@ -23,7 +23,7 @@ class ProductCreationTest < ActionDispatch::IntegrationTest
       post products_path, params: { product: { name: '', brand: '', ingredients: '', info: 'not edible but almost', shelf: '' }}
     end
     assert_template'products/new'
-    assert_select 'div.alert', 'The form contains 4 errors.'
+    assert_select 'div.alert', 'The form contains 5 errors.'
   end
 
 end

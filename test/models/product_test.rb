@@ -34,6 +34,11 @@ class ProductTest < ActiveSupport::TestCase
     assert_not @product.valid?
   end
 
+  test 'shelf life should not be negative' do
+    @product.shelf = -1
+    assert_not @product.valid?
+  end
+
   test 'name should not be too long' do
     @product.name = 'a'*51
     assert_not @product.valid?

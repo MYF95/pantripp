@@ -2,7 +2,9 @@ require 'test_helper'
 
 class ProductlistTest < ActiveSupport::TestCase
   def setup
-    @productlist = Productlist.new(product_id: create(:product).id, list_id: create(:list).id)
+    @product = create(:product)
+    @list = create(:list)
+    @productlist = Productlist.create(product: @product, list: @list, quantity: 17)
   end
 
   test 'should be valid' do
@@ -17,5 +19,9 @@ class ProductlistTest < ActiveSupport::TestCase
   test 'should require a list id' do
     @productlist.list_id = nil
     assert_not @productlist.valid?
+  end
+
+  test 'amount method should be calculated correctly' do
+    assert_equal @productlist.quantity, @list.amount(@product)
   end
 end
