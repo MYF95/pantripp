@@ -1,6 +1,6 @@
 -if user_signed_in?
   %div.follow_form
     - if current_user.lists.include?(@list)
-      = render 'lists/user_partials/delete'
+      =link_to 'Remove from my list', delete_list_path(@list, current_user), method: :delete, class: 'btn btn-primary'
     - else
-      = render 'lists/user_partials/add'
+      =link_to 'Add to my list', add_list_path(@list, current_user), method: :post, class: 'btn btn-primary'

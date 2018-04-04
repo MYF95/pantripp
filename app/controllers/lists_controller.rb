@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy, :edit]
+  before_action :logged_in_user, only: [:create, :destroy, :edit, :add_userlist, :delete_userlist]
+  before_action :list_getter, only: [:show, :edit, :update, :destroy]
 
   def index
     @lists = List.paginate(page: params[:page], per_page: 9)
@@ -10,11 +11,9 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
   end
 
   def edit
-    @list = List.find(params[:id])
   end
 
   def create
@@ -28,7 +27,6 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list = List.find(params[:id])
     if @list.update_attributes(list_params)
       flash[:info] = 'List updated'
       redirect_to @list
@@ -38,7 +36,6 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find(params[:id])
     if @list.destroy
       flash[:info] = 'List deleted'
       redirect_to lists_path
@@ -58,7 +55,65 @@ class ListsController < ApplicationController
     @userlist = current_user.lists.paginate(page: params[:my_list_page], per_page: 3)
   end
 
+  def add_product
+    @product = Product.find(params[:product_id])
+    @list = List.find(params[:list_id])
+
+    # if @productlist.quantity.nil? #TODO migracion para 1 por defecto
+    #   @productlist.quantity = 1
+    # end
+    @productlist = Productlist.find_by(list: @list, product: @product)
+    if @productlist.blank?
+      @productlist = @product.productlists.new(list: @list, quantity: params[:productlist][:quantity])
+      if @productlist.save
+        flash[:info] = "Product added to #{@list.name}"
+        redirect_to products_path
+      else
+        flash[:error] = 'Something went wrong'
+        redirect_to root_path
+      end
+    else
+      @productlist.quantity += params[:productlist][:quantity].to_i
+      @productlist.save
+      flash[:info] = "Amount added to #{@product.name}"
+      redirect_to products_path
+    end
+
+  end
+
+  def delete_product
+  end
+
+  def add_list
+    @user = User.find(params[:user_id])
+    @list = List.find(params[:list_id])
+    @userlist = @user.userlists.new(list: @list)
+    if @userlist.save
+      flash[:info] = 'List added to your lists'
+      redirect_to user_list_path(@user)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def delete_list
+    @list = List.find(params[:list_id])
+    @user = User.find(params[:user_id])
+    @userlist = Userlist.find_by(user: @user, list: @list)
+    if @userlist.destroy
+      flash[:info] = 'List removed from your lists'
+      redirect_to user_list_path(@user)
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to root_path
+    end
+  end
+
   private
+
+    def list_getter
+      @list = List.find(params[:id])
+    end
 
     def list_params
       params.require(:list).permit(:name, :capacity, :location)

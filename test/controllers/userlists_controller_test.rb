@@ -10,7 +10,7 @@ class UserlistsControllerTest < ActionDispatch::IntegrationTest
   test 'should redirect add to list when not logged in' do
     get list_path(@list)
     assert_template 'lists/show'
-    post userlists_path, params: { userlist: {user: @user, list: @list }}
+    post add_userlist_path(@user, @list), params: { userlist: {user: @user, list: @list }}
     follow_redirect!
     assert_template 'users/sessions/new'
     assert_not flash.empty?
@@ -21,7 +21,7 @@ class UserlistsControllerTest < ActionDispatch::IntegrationTest
     get list_path(@list)
     assert_template 'lists/show'
     assert_no_difference 'Userlist.count' do
-      delete userlist_path(@userlist)
+      delete delete_userlist_path(@list, @user)
     end
     follow_redirect!
     assert_template 'users/sessions/new'

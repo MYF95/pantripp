@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require rails-ujs
 //= require turbolinks
+//= require custom
 //= require_tree .

@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   has_many :productlists
-  has_many :lists, through: :productlists
+  has_many :lists, through: :productlists, dependent: :destroy
   validates :name, presence: true, length: { maximum: 50}
   validates :brand, presence: true, length: { maximum: 50}
   validates :ingredients, presence: true

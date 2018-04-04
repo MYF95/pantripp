@@ -1,5 +1,0 @@
-= form_for(current_user.userlists.create) do |f|
-  = hidden_field_tag :user_id, current_user.id
-  = hidden_field_tag :list_id, @list.id
-  = f.submit 'Add to my lists', class: 'btn btn-primary'
-

@@ -1,4 +1,12 @@
-= form_for(list.productlists.create) do |f|
+-#= form_for(list.productlists.create) do |f|
+-#  = hidden_field_tag :product_id, @product.id
+-#  = hidden_field_tag :list_id, list.id
+-#  = f.label "Quantity"
+-#  %br/
+-#  = f.number_field :quantity
+-#  = f.submit 'Add product to list', class: 'btn btn-primary'
+
+= form_for(list.productlists.create, url: add_product_path(@product, list), method: :post) do |f|
   = hidden_field_tag :product_id, @product.id
   = hidden_field_tag :list_id, list.id
   = f.label "Quantity"
