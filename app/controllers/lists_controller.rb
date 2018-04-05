@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :edit, :add_userlist, :delete_userlist]
-  before_action :list_getter, only: [:show, :edit, :update, :destroy]
+  before_action :list_getter, only: [:show, :edit, :update, :destroy, :remove_product, :delete_product]
 
   def index
     @lists = List.paginate(page: params[:page], per_page: 9)
@@ -14,6 +14,9 @@ class ListsController < ApplicationController
   end
 
   def edit
+  end
+
+  def remove_product
   end
 
   def create
@@ -49,11 +52,15 @@ class ListsController < ApplicationController
     @list = List.find(params[:list_id])
   end
 
+  #TODO Order lists buttons to group them up logically, and not having a shitton of links lumped together
+
   def products
     @product = Product.find(params[:product_id])
     @lists = List.paginate(page: params[:lists_page], per_page: 9)
     @userlist = current_user.lists.paginate(page: params[:my_list_page], per_page: 3)
   end
+
+  #TODO filter products in list by alphabetical order
 
   def add_product
     @product = Product.find(params[:product_id])
@@ -62,12 +69,13 @@ class ListsController < ApplicationController
     # if @productlist.quantity.nil? #TODO migracion para 1 por defecto
     #   @productlist.quantity = 1
     # end
+
     @productlist = Productlist.find_by(list: @list, product: @product)
     if @productlist.blank?
       @productlist = @product.productlists.new(list: @list, quantity: params[:productlist][:quantity])
       if @productlist.save
         flash[:info] = "Product added to #{@list.name}"
-        redirect_to products_path
+        redirect_to list_path(@list)
       else
         flash[:error] = 'Something went wrong'
         redirect_to root_path
@@ -76,12 +84,29 @@ class ListsController < ApplicationController
       @productlist.quantity += params[:productlist][:quantity].to_i
       @productlist.save
       flash[:info] = "Amount added to #{@product.name}"
-      redirect_to products_path
+      redirect_to list_path(@list)
     end
 
   end
 
   def delete_product
+    @product = Product.find(params[:product_id])
+    quantity = params[:productlist][:quantity].to_i
+    @productlist = Productlist.find_by(list: @list, product: @product)
+    if (@productlist.quantity - quantity) > 0
+      @productlist.quantity -= quantity
+      @productlist.save
+      flash[:info] = 'Item quantity reduced'
+      redirect_to remove_product_path(@list)
+    else
+      if @productlist.destroy
+        flash[:info] = 'Item removed from list'
+        redirect_to list_path(@list)
+      else
+        flash[:info] = 'Something went wrong'
+        redirect_to root_path
+      end
+    end
   end
 
   def add_list

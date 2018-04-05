@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
   # Product list logic
   post '/products/:id/lists/:list_id', to: 'lists#add_product', as: :add_product
-  delete '/lists/:list_id/:product_id', to: 'lists#delete_product', as: :delete_product
+  get '/lists/:id/remove', to: 'lists#remove_product', as: :remove_product
+  delete '/lists/:id/remove/:product_id', to: 'lists#delete_product', as: :delete_product
 
   resources :users
   resources :products

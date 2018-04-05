@@ -1,0 +1,18 @@
+- provide(:title, @list.name)
+
+%div.jumbotron
+
+  %h1 #{@list.name}
+  %h2= "Capacity: #{@list.capacity}"
+  %h2= "Location: #{@list.location}"
+
+  %h2 Products in this list
+  %div.productlist
+    %ul
+      - @list.products.each do |product|
+        %li
+          = link_to "#{product.name}", product_path(product)
+          = "Quantity: x#{@list.amount(product)}"
+          = render 'lists/product_partials/remove_product', product: product
+
+  =link_to 'Return to list', list_path(@list)

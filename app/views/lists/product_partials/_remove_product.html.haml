@@ -1,6 +1,9 @@
--#-if user_signed_in?
--#  %div.follow_form
--#    - if current_user.lists.include?(@list)
--#      = form_for(@list.productlists.find_by(list_id: @list.id, product_id: product.id), html: { method: :delete }) do |f|
--#        = hidden_field_tag :list_id, @list.id
--#        = f.submit 'Remove product from list', class: 'btn btn-primary'
+-if user_signed_in?
+  %div.follow_form
+    - if current_user.lists.include?(@list)
+      = form_for(@list.productlists.find_by(list_id: @list.id, product_id: product.id), url: delete_product_path(@list, product), method: :delete) do |f|
+        = hidden_field_tag :list_id, @list.id
+        = f.label "Quantity"
+        %br/
+        = f.number_field :quantity
+        = f.submit 'Remove product from list', class: 'btn btn-primary'
