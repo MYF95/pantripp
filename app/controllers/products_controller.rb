@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :edit]
+  before_action :product_getter, except: [:index, :new, :create]
 
   # TODO Investigar porqué no coge el element 1 como el 1 verdadero
 
@@ -7,22 +8,17 @@ class ProductsController < ApplicationController
     @products = Product.paginate(page: params[:page], per_page: 9)
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  def show; end
 
   def new
     @product = Product.new
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update_attributes(product_params)
-      flash[:success] = "Product updated"
+      flash[:success] = 'Product updated'
       redirect_to @product
     else
       render 'edit'
@@ -40,17 +36,20 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     if @product.destroy
-      flash[:info] = "Product deleted"
+      flash[:info] = 'Product deleted'
       redirect_to products_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = 'Something went wrong'
       redirect_to @product
     end
   end
 
   private
+
+    def product_getter
+       @product = Product.find(params[:id])
+    end
 
     def product_params
       params.require(:product).permit(:name, :brand, :ingredients, :info, :shelf)

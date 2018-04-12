@@ -1,6 +1,8 @@
 class ListsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :edit, :add_userlist, :delete_userlist]
-  before_action :list_getter, only: [:show, :edit, :update, :destroy, :remove_product, :delete_product]
+  before_action :list_getter, except: [:index, :new, :create, :products, :add_product]
+  before_action :product_getter, only: [:products, :add_product]
+  before_action :user_getter, only: [:add_list, :delete_list]
 
   def index
     @lists = List.paginate(page: params[:page], per_page: 9)
@@ -45,25 +47,19 @@ class ListsController < ApplicationController
     end
   end
 
-  def users
-    @list = List.find(params[:list_id])
-  end
-
-  #TODO Order lists buttons to group them up logically, and not having a shitton of links lumped together
-
+  # Products inside list
   def products
-    @product = Product.find(params[:product_id])
     @lists = List.paginate(page: params[:lists_page], per_page: 9)
     @userlist = current_user.lists.paginate(page: params[:my_list_page], per_page: 3)
   end
 
-  #TODO filter products in list by alphabetical order
-  #TODO control capacity vs total quantities
-  #TODO adding quantities directly
-  #TODO removing a product with a negative number is adding it
-
   def add_product
-    @product = Product.find(params[:product_id])
+
+    #TODO filter products in list by alphabetical order
+    #TODO control capacity vs total quantities
+    #TODO adding quantities directly
+    #TODO removing a product with a negative number is adding it
+
     @list = List.find(params[:list_id])
 
     # if @productlist.quantity.nil? #TODO migracion para 1 por defecto
@@ -109,9 +105,10 @@ class ListsController < ApplicationController
     end
   end
 
+  # Users inside list
+  def users; end
+
   def add_list
-    @user = User.find(params[:user_id])
-    @list = List.find(params[:list_id])
     @userlist = @user.userlists.new(list: @list)
     if @userlist.save
       flash[:info] = 'List added to your lists'
@@ -122,8 +119,6 @@ class ListsController < ApplicationController
   end
 
   def delete_list
-    @list = List.find(params[:list_id])
-    @user = User.find(params[:user_id])
     @userlist = Userlist.find_by(user: @user, list: @list)
     if @userlist.destroy
       flash[:info] = 'List removed from your lists'
@@ -140,7 +135,17 @@ class ListsController < ApplicationController
       @list = List.find(params[:id])
     end
 
+    def product_getter
+      @product = Product.find(params[:id])
+    end
+
+    def user_getter
+      @user = User.find(params[:user_id])
+    end
+
     def list_params
       params.require(:list).permit(:name, :capacity, :location)
     end
+
+
 end
