@@ -1,0 +1,11 @@
+%h3 Products in this list
+- @list.products.each_slice(3) do |groups|
+  .row
+    -groups.each do |product|
+      .col-sm-6.col-lg-4.lists
+        %ul
+          %li
+            =link_to product_path(product) do
+              =image_tag Faker::Avatar.image('product', '100x100')
+            %p= link_to product.name, product_path(product), id: 'product'
+            %p= "Quantity: x#{@list.amount(product)}"

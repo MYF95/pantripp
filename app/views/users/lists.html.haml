@@ -1,13 +1,18 @@
 - provide(:title, 'Your lists')
 
-%div.jumbotron
-  %h1 Here are all of your lists
-  %h2= "You currently have #{pluralize(@user.lists.count, 'list')}"
-  %ul
+.jumbotron
+  .container
+    %h2 Here are all of your lists
+    %h3= "You currently have #{pluralize(@user.lists.count, 'list')}"
     - @users.order(:name).each_slice(3) do |groups|
-      %div.row
+      .row
         -groups.each do |list|
-          %div.col-sm-6.col-lg-4.square.my-list-square
-            %div.list-square-content
-              %li= link_to "#{list.name}", list_path(list)
-    = will_paginate
+          .col-sm-6.col-lg-4.lists
+            %ul
+              %li
+                =link_to list_path(list) do
+                  =image_tag Faker::Avatar.image('list', '100x100')
+                %p= link_to "#{list.name}", list_path(list)
+                %p Capacity: #{list.capacity}
+                %p Location: #{list.location}
+      = will_paginate

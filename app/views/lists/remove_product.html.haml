@@ -1,13 +1,13 @@
 - provide(:title, @list.name)
 
-%div.jumbotron
+.jumbotron
 
   %h1 #{@list.name}
   %h2= "Capacity: #{@list.capacity}"
   %h2= "Location: #{@list.location}"
 
   %h2 Products in this list
-  %div.productlist
+  .productlist
     %ul
       - @list.products.each do |product|
         %li

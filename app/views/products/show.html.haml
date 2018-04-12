@@ -1,10 +1,10 @@
 - provide(:title, @product.name)
 
 
-%div.jumbotron
+.jumbotron
   %h1 #{@product.name}
-  %div.product-image
-  %div.product-info.row
+  .product-image
+  .product-info.row
     .tab
       %button.tablinks{:onclick => "productInfo(event, 'Info')"} Info
       %button.tablinks{:onclick => "productInfo(event, 'Brand')"} Brand
@@ -24,11 +24,11 @@
       %h3 Shelf Life (In days)
       = @product.shelf
 
-  %div.row
+  .row
     -if user_signed_in?
-      %div.col-sm-6.col-lg-4
+      .col-sm-6.col-lg-4
         =link_to 'Edit product', edit_product_path, class: 'btn btn-primary'
-      %div.col-sm-6.col-lg-4
+      .col-sm-6.col-lg-4
         =link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
-    %div.col-sm-6.col-lg-4
+    .col-sm-6.col-lg-4
       =link_to 'Back to products', products_path, class: 'btn btn-primary'

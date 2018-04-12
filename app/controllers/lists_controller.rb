@@ -62,9 +62,7 @@ class ListsController < ApplicationController
 
     @list = List.find(params[:list_id])
 
-    # if @productlist.quantity.nil? #TODO migracion para 1 por defecto
-    #   @productlist.quantity = 1
-    # end
+    #TODO migracion para 1 por defecto
 
     @productlist = Productlist.find_by(list: @list, product: @product)
     if @productlist.blank?

@@ -1,8 +1,8 @@
 - provide(:title, 'Your profile')
 
-%div.jumbotron
+.jumbotron
   %h1= "Hello #{@user.name}"
-  %div.container
+  .container
     %h2 Here is some basic info about you:
     %ul.profile
       %li= "Email: #{@user.email}"
@@ -10,7 +10,7 @@
 
   - if current_user?(@user)
     %h2= "You are currently following #{pluralize(@user.lists.count, 'list')}"
-    %div.container
+    .container
       %ul.userlist
         - @user.lists.each do |list|
           %li= link_to "#{list.name}", list_path(list)

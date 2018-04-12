@@ -6,22 +6,8 @@
 
 /* TODO CSS for mobile and collapses */
 
-html {
-  height: 100%;
-}
-
-.container{
-  height: 100%;
-
-}
-
-* {
-
-}
-
 body{
   padding-top: 40px;
-  height: 100%;
 }
 
 body::before{
@@ -32,12 +18,17 @@ body::before{
   height: 100%;
   z-index: -1;
   background-image: image_url("background.png");
+  background-repeat: repeat;
   background-attachment: fixed;
 }
 
 h1 {
   line-height: 1.1;
   font-size: 3rem;
+}
+
+h3 {
+  padding-top: 10px;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -66,7 +57,6 @@ h1, h2, h3, h4, h5, h6{
 
 .navbar-inverse{
   background-color: #FFD994;
-  margin: auto;
 }
 
 .nav {
@@ -83,7 +73,48 @@ h1, h2, h3, h4, h5, h6{
 
 /* Homepage */
 
-
-
-
 /* Columns */
+
+/* Lists */
+
+/* TODO Resizing to 2 columns breaks the lists */
+
+.lists {
+  border-style: solid;
+  border-radius: 10px;
+
+  ul{
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+
+.product-lists {
+  border-style: solid;
+  border-radius: 10px;
+
+  ul{
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li{
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+.users-list {
+  border-style: solid;
+  border-radius: 10px;
+
+  ul{
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li{
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}

@@ -1,11 +1,13 @@
 - provide(:title, 'All lists')
 
-%div.jumbotron
-  %h2 All the lists
-  %ul.list-lists
-  - @lists.each_slice(3) do |groups|
-    %div.row
-      - groups.each do |list|
-        .col-sm-6.col-lg-4
-          %li= link_to "List name: #{list.name}", list_path(list)
-  = will_paginate
+%h2 All the lists
+.row
+  - @lists.each do |list|
+    .col-sm-6.col-lg-4
+      .lists
+        =link_to list_path(list) do
+          =image_tag Faker::Avatar.image('list','100x100')
+        %p= link_to list.name, list_path(list)
+        %p Capacity: #{list.capacity}
+        %p Location: #{list.location}
+= will_paginate

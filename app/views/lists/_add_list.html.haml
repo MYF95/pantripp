@@ -1,5 +1,5 @@
 -if user_signed_in?
-  %div.follow_form
+  .follow_form
     - if current_user.lists.include?(@list)
       =link_to 'Remove from my list', delete_list_path(@list, current_user), method: :delete, class: 'btn btn-primary'
     - else

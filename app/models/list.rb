@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+  # TODO name should not be too long to break the css, or the css should accomodate a longer name better
   validates :name, presence: true, length: { maximum: 30 }
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0}
   validates :location, presence: true, length: { maximum: 50 }

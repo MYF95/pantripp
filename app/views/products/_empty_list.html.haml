@@ -1,0 +1,4 @@
+%h3 List is currently empty
+-if user_signed_in?
+  %p Why don't you add some products to this list?
+  =link_to 'Add products', products_path, class: 'btn btn-primary'
