@@ -10,14 +10,11 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
-  def remove_product
-  end
+  def remove_product; end
 
   def create
     @list = List.new(list_params)
@@ -61,6 +58,9 @@ class ListsController < ApplicationController
   end
 
   #TODO filter products in list by alphabetical order
+  #TODO control capacity vs total quantities
+  #TODO adding quantities directly
+  #TODO removing a product with a negative number is adding it
 
   def add_product
     @product = Product.find(params[:product_id])

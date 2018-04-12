@@ -2,7 +2,6 @@ class ProductlistsController < ApplicationController
   before_action :list_setter
   before_action :product_setter, only:[:create]
 
-
   def create
     @productlist = @product.productlists.new(list: @list, quantity: params[:productlist][:quantity])
     if @productlist.quantity.nil?

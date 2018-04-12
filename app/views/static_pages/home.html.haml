@@ -1,3 +1,9 @@
-.center.jumbotron
-  %h1 Pantrippu app
-  %p This is the homepage for the pantrippu app
+.jumbotron
+  %h1 Pantripp app
+.row
+  .col-md-4
+    %h2 Sign up for the app
+    %p= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary'
+  .col-md-4.col-xs-offset-4
+    %h2 Login down below
+    %p= link_to 'Login', login_path, class: 'btn btn-primary'

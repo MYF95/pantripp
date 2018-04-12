@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'users/:id',        to: 'users#show'
 
 
+  # TODO Change the routings using member and collection routes. If it doesn't somehow fit, there is probably some problem with it.
+
   # Association indexes logic
   get '/:user_id/lists', to: 'users#lists', as: :user_list
   get '/:list_id/users', to: 'lists#users', as: :list_of_users

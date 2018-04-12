@@ -6,7 +6,6 @@
   - @lists.each_slice(3) do |groups|
     %div.row
       - groups.each do |list|
-        %div.col-sm-6.col-lg-4.square
-          %div.list-square-content
-            %li= link_to "List name: #{list.name}", list_path(list)
+        .col-sm-6.col-lg-4
+          %li= link_to "List name: #{list.name}", list_path(list)
   = will_paginate
