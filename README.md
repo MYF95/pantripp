@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Pantripp app
 
-Things you may want to cover:
+This app is a training project done to learn ruby on rails.
 
-* Ruby version
+The main idea of this app was an app to keep on check things users
+bought and to know what they have in their pantries.
 
-* System dependencies
+The app in its current version has:
 
-* Configuration
+-Users using the devise gem
 
-* Database creation
+-Products
 
-* Database initialization
+-Lists
 
-* How to run the test suite
+-Users having their lists.
 
-* Services (job queues, cache servers, search engines, etc.)
+-Lists having their product list.
 
-* Deployment instructions
+With all CRUD operations.
 
-* ...
+Things left to do are:
+
+Properly count the capacity of a pantry and calculate 
+how many of each product would fit in it.
+
+Better CSS
+
+Implement a whole lot of tests.
