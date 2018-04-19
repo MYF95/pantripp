@@ -1,6 +1,6 @@
 -if user_signed_in?
   .follow_form
     - if current_user.lists.include?(@list)
-      =link_to 'Remove from my list', delete_list_path(@list, current_user), method: :delete, class: 'btn btn-primary'
+      =link_to 'Remove list from my list', delete_list_path(@list, current_user), method: :delete, class: 'btn btn-primary'
     - else
       =link_to 'Add to my list', add_list_path(@list, current_user), method: :post, class: 'btn btn-primary'

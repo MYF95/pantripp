@@ -1,17 +1,14 @@
 - provide(:title, 'All Products')
 
 .jumbotron
-  .container
-    %h2 Products
-    - @products.each_slice(3) do |groups|
-      .row
-        -groups.each do |product|
-          .col-sm-6.col-lg-4.product-lists
-            %ul
-              %li
-                =link_to product_path(product) do
-                  =image_tag Faker::Avatar.image('product', '100x100')
-                %p= link_to product.name, product_path(product), id: 'product'
-                - if user_signed_in?
-                  %p= link_to '+ Add to a list', products_lists_path(product), class: 'btn btn-primary'
-    = will_paginate
+  %h2 Products
+  .row
+    - @products.each do |product|
+      .col-sm-6.col-lg-4
+        .product-lists
+          =link_to product_path(product) do
+            =image_tag Faker::Avatar.image('product', '100x100')
+          %p= link_to product.name, product_path(product), id: 'product'
+          - if user_signed_in?
+            %p= link_to '+ Add to a list', products_lists_path(product), class: 'btn btn-primary'
+  = will_paginate

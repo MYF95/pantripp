@@ -2,30 +2,24 @@
 
 .jumbotron
   - if current_user.lists.present?
-    .container
-      %h2 Add to my lists
-      - @userlist.each_slice(3) do |groups|
-        .row
-          -groups.each do |list|
-            .col-sm-6.col-lg-4.lists
-              %ul
-                %li
-                  =image_tag Faker::Avatar.image('list', '100x100')
-                  %p #{list.name}
-                  %p Capacity: #{list.capacity}
-                  = render 'lists/product_partials/add_product', list: list
-      = will_paginate @userlist, :param_name => :my_list_page
+    %h2 Add to my lists
+    .row
+      - @userlist.each do |list|
+        .col-sm-6.col-lg-4
+          .lists
+            =image_tag Faker::Avatar.image('list', '100x100')
+            %p #{list.name}
+            %p Capacity: #{list.capacity}
+            = render 'lists/product_partials/add_product', list: list
+    = will_paginate @userlist, :param_name => :my_list_page
 
-  .container
     %h2 Add to a list
-    - @lists.each_slice(3) do |groups|
-      .row
-        - groups.each do |list|
-          .col-sm-6.col-lg-4.lists
-            %ul
-              %li
-                =image_tag Faker::Avatar.image('list2', '100x100')
-                %p #{list.name}
-                %p Capacity: #{list.capacity}
-              = render 'lists/product_partials/add_product', list: list
+    .row
+      - @lists.each do |list|
+        .col-sm-6.col-lg-4
+          .lists
+            =image_tag Faker::Avatar.image('list2', '100x100')
+            %p #{list.name}
+            %p Capacity: #{list.capacity}
+            = render 'lists/product_partials/add_product', list: list
     = will_paginate @lists, :param_name => :lists_page

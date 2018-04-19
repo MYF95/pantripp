@@ -3,28 +3,28 @@
 .field
   = f.label :name
   %br/
-  = f.text_field :name, autofocus: true, autocomplete: "name"
+  = f.text_field :name, autofocus: true, autocomplete: 'name'
 
 .field
   = f.label :brand
   %br/
-  = f.text_field :brand, autocomplete: "brand"
+  = f.text_field :brand, autocomplete: 'brand'
 
 .field
   = f.label :ingredients
   %br/
-  = f.text_area :ingredients, autocomplete: "ingredients"
+  = f.text_area :ingredients, autocomplete: 'ingredients'
 
 .field
   = f.label :info
   %br/
-  = f.text_area :info, autocomplete: "info"
+  = f.text_area :info, autocomplete: 'info'
 
 .field
-  = f.label "Shelf Life time"
+  = f.label 'Shelf Life time'
   %i (Number in days)
   %br/
-  = f.number_field :shelf, autocomplete: "shelf"
+  = f.number_field :shelf, autocomplete: 'shelf'
 
 .actions
   = f.submit yield(:button_text)

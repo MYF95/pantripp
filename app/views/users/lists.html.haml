@@ -1,18 +1,6 @@
 - provide(:title, 'Your lists')
 
 .jumbotron
-  .container
-    %h2 Here are all of your lists
-    %h3= "You currently have #{pluralize(@user.lists.count, 'list')}"
-    - @users.order(:name).each_slice(3) do |groups|
-      .row
-        -groups.each do |list|
-          .col-sm-6.col-lg-4.lists
-            %ul
-              %li
-                =link_to list_path(list) do
-                  =image_tag Faker::Avatar.image('list', '100x100')
-                %p= link_to "#{list.name}", list_path(list)
-                %p Capacity: #{list.capacity}
-                %p Location: #{list.location}
-      = will_paginate
+  %h2 Here are all of your lists
+  %h3= "You currently have #{pluralize(@user.lists.count, 'list')}"
+  = render 'lists', size: '100x100'

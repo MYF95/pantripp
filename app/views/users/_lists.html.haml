@@ -1,0 +1,10 @@
+.row
+  - @users.order(:name).each do |list|
+    .col-sm-6.col-lg-4
+      .lists
+        =link_to list_path(list) do
+          =image_tag Faker::Avatar.image('list', size)
+        %p= link_to "#{list.name}", list_path(list)
+        %p Capacity: #{list.capacity}
+        %p Location: #{list.location}
+= will_paginate

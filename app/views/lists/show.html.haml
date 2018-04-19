@@ -1,28 +1,28 @@
 - provide(:title, @list.name)
 
 .jumbotron
-  .container
-    %h1 #{@list.name}
-    %h2= "Capacity: #{@list.capacity}"
-    %h2= "Location: #{@list.location}"
-    =link_to 'Users in this list', list_of_users_path(@list), class: 'btn btn-primary'
-    - if @list.products.empty?
-      = render 'products/empty_list'
-    - else
-      = render 'products/list'
+  %h1 #{@list.name}
+  =image_tag Faker::Avatar.image('list', '150x150')
+  %h2= "Capacity: #{@list.capacity}"
+  %h2= "Location: #{@list.location}"
+  =link_to 'Users in this list', list_of_users_path(@list), class: 'btn btn-primary'
+  - if @list.products.empty?
+    = render 'products/empty_list'
+  - else
+    = render 'products/list'
 
   .row
-    .col-md-6.col-md-offset-3.remove-button
-      =link_to 'Remove items from list', remove_product_path(@list), class: 'btn btn-primary'
-      = render 'add_list'
+    .col-md-6.col-md-offset-3
+      .remove-button
+        =link_to 'Remove items from list', remove_product_path(@list), class: 'btn btn-primary'
+        = render 'add_list'
 
 
   %br
   -if user_signed_in?
-    = render 'add_list'
     %br
-    =link_to 'Edit List Properties', edit_list_path
+    =link_to 'Edit List Properties', edit_list_path, class: 'btn btn-primary'
     %br
-    =link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' }
+    =link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
     %br
-  =link_to 'Back to lists', lists_path
+  =link_to 'Back to lists', lists_path, class: 'btn btn-primary'
