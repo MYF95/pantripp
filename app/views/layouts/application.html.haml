@@ -11,6 +11,6 @@
           %span{"aria-hidden" => "true"} ×
         = message
     .container.text-center
-
       = yield
+      = render 'layouts/modal'
       -#= debug(params) if Rails.env.development?

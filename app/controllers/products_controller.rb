@@ -12,6 +12,10 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    respond_to do |format|
+      format.html
+      format.js { render layout: false}
+    end
   end
 
   def edit; end
