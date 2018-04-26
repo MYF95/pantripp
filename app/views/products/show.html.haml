@@ -1,28 +1,27 @@
 - provide(:title, @product.name)
 
-
 .jumbotron
   %h1 #{@product.name}
   .product-image
   .product-info.row
     .tab
-      %button.tablinks{:onclick => "productInfo(event, 'Info')"} Info
-      %button.tablinks{:onclick => "productInfo(event, 'Brand')"} Brand
-      %button.tablinks{:onclick => "productInfo(event, 'Ingredients')"} Ingredients
-      %button.tablinks{:onclick => "productInfo(event, 'Shelf')"} Shelf Life
+      %button.tablinks Info
+      %button.tablinks Brand
+      %button.tablinks Ingredients
+      %button.tablinks Shelf
 
     #Info.tabcontent
       %h3 Info
-      = @product.info
+      %p= @product.info
     #Brand.tabcontent
       %h3 Brand
-      = @product.brand
+      %p= @product.brand
     #Ingredients.tabcontent
       %h3 Ingredients
-      = @product.ingredients
+      %p= @product.ingredients
     #Shelf.tabcontent
       %h3 Shelf Life (In days)
-      = @product.shelf
+      %p= @product.shelf
 
   .row
     -if user_signed_in?

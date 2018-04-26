@@ -77,7 +77,7 @@ class ListsController < ApplicationController
     else
       @productlist.quantity += params[:productlist][:quantity].to_i
       @productlist.save
-      flash[:info] = "Amount added to #{@product.name}"
+      flash[:success] = "Amount added to #{@product.name}"
       redirect_to list_path(@list)
     end
 

@@ -5,8 +5,12 @@
   %body
     %header.navbar.navbar-fixed-top.navbar-inverse
       = render 'layouts/header'
+    - flash.each do |message_type, message|
+      %div{:class => "alert alert-#{message_type} alert-dismissible text-center position-absolute fade in"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        = message
     .container.text-center
-      - flash.each do |message_type, message|
-        = content_tag(:div, message, class: "alert alert-#{message_type}")
+
       = yield
       -#= debug(params) if Rails.env.development?

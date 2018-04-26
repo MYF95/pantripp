@@ -10,6 +10,8 @@ body{
   padding-top: 50px;
 }
 
+/* TODO revisar el before por el contenido en blanco */
+
 body::before{
   content: "";
   opacity: 0.2;
@@ -35,6 +37,11 @@ h1, h2, h3, h4, h5, h6{
   font-family: "Fluid Lighter";
   margin: 0 0 10px 0;
   font-weight: normal;
+}
+
+.position-absolute {
+  width: 100%;
+  position: absolute;
 }
 
 /* Header */
@@ -114,5 +121,32 @@ h1, h2, h3, h4, h5, h6{
   li{
     margin-top: 30px;
     margin-bottom: 30px;
+  }
+}
+
+/* Alert messages */
+
+.alert-notice {
+  @extend .alert-info
+}
+
+/* Tab content */
+
+.product-image{
+  margin: 10px;
+}
+
+.tabcontent {
+  border-style: solid;
+  border-radius: 10px;
+  margin: 10px;
+  display: none;
+
+  &:nth-child(2){
+    display:block;
+  }
+
+  p {
+    margin: 10px;
   }
 }
