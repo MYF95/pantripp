@@ -3,7 +3,9 @@
 .jumbotron
   %h1 #{@product.name}
   .product-image
-  .product-info.row
+    =link_to product_path(@product) do
+      =image_tag Faker::Avatar.image('product', '150x150')
+  .row
     .tab
       %button.tablinks Info
       %button.tablinks Brand
