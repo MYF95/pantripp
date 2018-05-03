@@ -1,7 +1,7 @@
 - provide(:title, 'All Products')
 
-.jumbotron
-  %h2 Products
+%h2 All Products
+.wrapper
   .row
     - @products.each do |product|
       .col-sm-6.col-lg-4
@@ -10,5 +10,5 @@
             =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
           %p= link_to product.name, product_path(product), id: 'product'
           - if user_signed_in?
-            %p= link_to '+ Add to a list', products_lists_path(product), class: 'btn btn-primary'
+            = link_to '+ Add to a list', products_lists_path(product), class: 'btn btn-primary overlay'
   = will_paginate

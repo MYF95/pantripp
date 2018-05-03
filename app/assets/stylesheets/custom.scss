@@ -143,6 +143,8 @@ h1, h2, h3, h4, h5, h6{
 .product-lists {
   border-style: solid;
   border-radius: 10px;
+  padding-top : 10px;
+  margin-bottom: 30px;
 
   ul{
     list-style-type: none;
@@ -153,6 +155,21 @@ h1, h2, h3, h4, h5, h6{
     margin-top: 50px;
     margin-bottom: 50px;
   }
+
+  &:hover .overlay{
+    opacity: 1;
+    background: #FFBF4B;
+  }
+}
+
+.overlay{
+  bottom: 0;
+  background: #FFBF4B;
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  font-size: 20px;
+  text-align: center;
 }
 
 .users-list {
