@@ -3,7 +3,7 @@
     .col-sm-6.col-lg-4
       .lists
         =link_to list_path(list) do
-          =image_tag Faker::Avatar.image('list', size)
+          =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, size, 'png', 'set4')
         %p= link_to "#{list.name}", list_path(list)
         %p Capacity: #{list.capacity}
         %p Location: #{list.location}

@@ -7,7 +7,7 @@
       - @userlist.each do |list|
         .col-sm-6.col-lg-4
           .lists
-            =image_tag Faker::Avatar.image('list', '100x100')
+            =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
             %p #{list.name}
             %p Capacity: #{list.capacity}
             = render 'lists/product_partials/add_product', list: list
@@ -18,7 +18,7 @@
       - @lists.each do |list|
         .col-sm-6.col-lg-4
           .lists
-            =image_tag Faker::Avatar.image('list2', '100x100')
+            =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
             %p #{list.name}
             %p Capacity: #{list.capacity}
             = render 'lists/product_partials/add_product', list: list
