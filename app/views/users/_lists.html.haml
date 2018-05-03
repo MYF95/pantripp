@@ -1,10 +1,13 @@
-.row
-  - @users.order(:name).each do |list|
-    .col-sm-6.col-lg-4
-      .lists
-        =link_to list_path(list) do
-          =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, size, 'png', 'set4')
-        %p= link_to "#{list.name}", list_path(list)
-        %p Capacity: #{list.capacity}
-        %p Location: #{list.location}
-= will_paginate
+.wrapper
+  .row
+    - @users.order(:name).each do |list|
+      .col-sm-6.col-lg-4
+        .lists
+          .list-image
+            =link_to list_path(list) do
+              =image_tag Faker::Avatar.image('This is a completely random text line', size, 'png', 'set4')
+          .list-text
+            %p= link_to "#{list.name}", list_path(list)
+            %p Capacity: #{list.capacity}
+            %p Location: #{list.location}
+  = will_paginate

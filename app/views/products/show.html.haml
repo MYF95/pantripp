@@ -1,35 +1,33 @@
 - provide(:title, @product.name)
 
-.jumbotron
-  %h1 #{@product.name}
-  .product-image
-    =link_to product_path(@product) do
-      =image_tag Faker::Avatar.image('product', '150x150')
-  .row
-    .tab
-      %button.tablinks Info
-      %button.tablinks Brand
-      %button.tablinks Ingredients
-      %button.tablinks Shelf
+%h2 #{@product.name}
+.product-image
+  =link_to product_path(@product) do
+    =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '150x150', 'png', 'set4')
+.tab
+  %button.tablinks Info
+  %button.tablinks Brand
+  %button.tablinks Ingredients
+  %button.tablinks Shelf
 
-    #Info.tabcontent
-      %h3 Info
-      %p= @product.info
-    #Brand.tabcontent
-      %h3 Brand
-      %p= @product.brand
-    #Ingredients.tabcontent
-      %h3 Ingredients
-      %p= @product.ingredients
-    #Shelf.tabcontent
-      %h3 Shelf Life (In days)
-      %p= @product.shelf
+  #Info.tabcontent
+    %h3 Info
+    %p= @product.info
+  #Brand.tabcontent
+    %h3 Brand
+    %p= @product.brand
+  #Ingredients.tabcontent
+    %h3 Ingredients
+    %p= @product.ingredients
+  #Shelf.tabcontent
+    %h3 Shelf Life (In days)
+    %p= @product.shelf
 
-  .row
-    -if user_signed_in?
-      .col-sm-6.col-lg-4
-        =link_to 'Edit product', edit_product_path, class: 'btn btn-primary'
-      .col-sm-6.col-lg-4
-        =link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
+.row
+  -if user_signed_in?
     .col-sm-6.col-lg-4
-      =link_to 'Back to products', products_path, class: 'btn btn-primary'
+      =link_to 'Edit product', edit_product_path, class: 'btn btn-primary'
+    .col-sm-6.col-lg-4
+      =link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
+  .col-sm-6.col-lg-4
+    =link_to 'Back to products', products_path, class: 'btn btn-primary'

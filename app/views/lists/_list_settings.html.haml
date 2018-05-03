@@ -1,0 +1,20 @@
+.col-sm-4.col-lg-2
+  = link_to '', lists_path, class: 'btn glyphicon glyphicon-arrow-left go-back'
+.col-sm-6.col-lg-8
+  %h2 #{@list.name}
+.col-sm-4.col-lg-2
+  .list-settings
+    .dropdown.btn
+      %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown'}
+        .glyphicon.glyphicon-cog
+          .caret
+      %ul.dropdown-menu
+        %li= link_to 'Remove items from list', remove_product_path(@list)
+        - if user_signed_in?
+          - if current_user.lists.include?(@list)
+            %li= link_to 'Remove list from my list', delete_list_path(@list, current_user), method: :delete
+          - else
+            %li= link_to 'Add to my list', add_list_path(@list, current_user), method: :post
+          %li= link_to 'Users in this list', list_of_users_path(@list)
+          %li= link_to 'Edit List Properties', edit_list_path
+          %li= link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' }

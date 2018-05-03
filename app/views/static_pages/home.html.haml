@@ -2,10 +2,8 @@
 
 .jumbotron
   %h1 Pantripp app
-
   -if user_signed_in?
-    .row
-      %p= "Welcome back #{current_user.name}"
+    %p= "Welcome back #{current_user.name}"
   - else
     .row
       .col-md-4
