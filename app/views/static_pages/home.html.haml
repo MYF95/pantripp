@@ -8,10 +8,10 @@
     %p= "Welcome back #{current_user.name}"
   - else
     .row
-      .col-md-4
+      .col-xs-12.col-md-4
         %h2 Sign up for the app
         %p= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary'
-      .col-md-4.col-xs-offset-4
+      .col-xs-12.col-md-4.col-md-offset-4
         %h2 Login down below
         %p= link_to 'Login', login_path, class: 'btn btn-primary'
 
