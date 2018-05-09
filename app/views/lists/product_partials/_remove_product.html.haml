@@ -4,5 +4,5 @@
       = hidden_field_tag :list_id, @list.id
       = f.label 'Quantity'
       %br/
-      = f.number_field :quantity
+      = f.number_field :quantity, min: 1
       = f.submit 'Remove product from list', class: 'btn btn-primary'

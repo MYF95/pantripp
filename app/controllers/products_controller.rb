@@ -2,8 +2,6 @@ class ProductsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :edit]
   before_action :product_getter, except: [:index, :new, :create]
 
-  # TODO Investigar porqué no coge el element 1 como el 1 verdadero
-
   def index
     @products = Product.paginate(page: params[:page], per_page: 9)
   end

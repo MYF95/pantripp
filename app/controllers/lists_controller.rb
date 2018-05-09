@@ -59,18 +59,13 @@ class ListsController < ApplicationController
 
   def add_product
 
-    #TODO filter products in list by alphabetical order
-    #TODO control capacity vs total quantities
-    #TODO adding quantities directly
-    #TODO removing a product with a negative number is adding it
+    #TODO adding quantities directly, most likely done with js
 
     @list = List.find(params[:list_id])
 
-    #TODO migracion para 1 por defecto
-
     @productlist = Productlist.find_by(list: @list, product: @product)
     if @productlist.blank?
-      @productlist = @product.productlists.new(list: @list, quantity: params[:productlist][:quantity])
+      @productlist = @product.productlists.new(list: @list, quantity: (params[:productlist][:quantity] ))
       if @productlist.save
         flash[:info] = "Product added to #{@list.name}"
         redirect_to list_path(@list)
@@ -91,7 +86,12 @@ class ListsController < ApplicationController
     @product = Product.find(params[:product_id])
     quantity = params[:productlist][:quantity].to_i
     @productlist = Productlist.find_by(list: @list, product: @product)
-    if (@productlist.quantity - quantity) > 0
+
+    if @productlist.quantity.nil?
+      @productlist.destroy
+      flash[:info] = 'Item removed from list'
+      redirect_to list_path(@list)
+    elsif (@productlist.quantity - quantity) > 0
       @productlist.quantity -= quantity
       @productlist.save
       flash[:info] = 'Item quantity reduced'
