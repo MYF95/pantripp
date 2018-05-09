@@ -1,7 +1,8 @@
 - provide(:title, @product.name)
 
-%h2 #{@product.name}
 .wrapper
+  .row
+    = render 'product_settings'
   .product-image
     =link_to product_path(@product) do
       =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '150x150', 'png', 'set4')
@@ -23,12 +24,3 @@
     #Shelf.tabcontent
       %h3 Shelf Life (In days)
       %p= @product.shelf
-
-  .row
-    -if user_signed_in?
-      .col-xs-12.col-sm-4
-        =link_to 'Edit product', edit_product_path, class: 'btn btn-primary'
-      .col-xs-12.col-sm-4
-        =link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary'
-    .col-xs-12.col-sm-4
-      =link_to 'Back to products', products_path, class: 'btn btn-primary'
