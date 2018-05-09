@@ -34,7 +34,7 @@ body{
   margin: 0;
   overflow: auto;
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 50px;
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .wrapper {
+  padding-top: 50px;
   justify-content: center;
   padding-bottom: 60px;
 }
@@ -66,7 +67,6 @@ h1, h2, h3, h4, h5, h6{
   float: left;
   font-size: 1.7em;
   text-transform: uppercase;
-  padding-top: 10px;
   font-weight: bold;
   color: #FFBF4B;
   text-decoration-line: none;
@@ -77,17 +77,21 @@ h1, h2, h3, h4, h5, h6{
           1px 1px 0 #000;
 }
 
-.navbar-inverse{
+.navbar{
   background-color: #FFD994;
 }
 
 .nav {
   font-weight: bold;
 
-  li:hover{
+  li:hover {
     background-color: #FFBF4B;
 
     a:hover{
+      color: black;
+    }
+
+    a:focus {
       color: black;
     }
   }
@@ -193,8 +197,15 @@ h1, h2, h3, h4, h5, h6{
 
 /* Alert messages */
 
+//TODO fix alert when logged out, it doesn't dissappear automatically sometimes
+
 .alert-notice {
   @extend .alert-info
+}
+
+.alert{
+  position: fixed;
+  width: 100%;
 }
 
 /* Tab content */

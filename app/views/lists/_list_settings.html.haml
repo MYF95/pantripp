@@ -9,7 +9,7 @@
     .dropdown.btn
       %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown'}
         .glyphicon.glyphicon-cog
-      %ul.dropdown-menu
+      %ul.dropdown-menu.dropdown-menu-right
         %li= link_to 'Remove items from list', remove_product_path(@list)
         - if user_signed_in?
           - if current_user.lists.include?(@list)

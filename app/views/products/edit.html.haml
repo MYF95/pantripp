@@ -1,7 +1,6 @@
 - provide(:title, 'Edit product')
 - provide(:button_text, 'Update product')
 
-.jumbotron
-  %h2 Update product
-  = form_for(@product) do |f|
-    = render 'form', f: f
+%h2 Update product
+= form_for(@product) do |f|
+  = render 'form', f: f

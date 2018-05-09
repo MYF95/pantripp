@@ -1,19 +1,20 @@
 - provide(:title, @list.name)
 
-.jumbotron
-
-  %h1 #{@list.name}
+%h2
+  Removing items from:
+  %strong #{@list.name}
+.wrapper
   %h2= "Capacity: #{@list.capacity}"
   %h2= "Location: #{@list.location}"
-
   %h2 Products in this list
   .row
     - @list.products.each do |product|
-      .col-sm-6.col-lg-4
+      .col-xs-12.col-sm-6.col-md-4
         .product-lists
-          =link_to product_path(product) do
-            =image_tag Faker::Avatar.image('product', '100x100')
+          .product-image
+            =link_to product_path(product) do
+              =image_tag Faker::Avatar.image('product', '100x100')
           %p= link_to product.name, product_path(product), id: 'product'
           %p= "Quantity: x#{@list.amount(product)}"
           = render 'lists/product_partials/remove_product', product: product
-  =link_to 'Return to list', list_path(@list)
+  =link_to 'Return to list', list_path(@list), class: 'btn btn-primary'
