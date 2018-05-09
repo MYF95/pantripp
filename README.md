@@ -29,3 +29,7 @@ how many of each product would fit in it.
 Better CSS
 
 Implement a whole lot of tests.
+
+Some bootstrap columns guidelines:
+
+Lists: make a row inside each list

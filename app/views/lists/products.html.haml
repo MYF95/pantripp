@@ -1,27 +1,36 @@
 - provide(:title, 'Adding product to list')
 
--#TODO everything
+- if current_user.lists.present?
+  %h2 Add to my lists
+  .row
+    - @userlist.each do |list|
+      .col-xs-12.col-sm-6.col-md-4
+        .lists
+          .row
+            .col-xs-4.col-md-4
+              .list-image.center-block
+                =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
+            .col-xs-8.col-md-8
+              .list-text
+                %p #{list.name}
+                %p Capacity: #{list.capacity}
+                .product-quantity-form
+                  = render 'lists/product_partials/add_product', list: list
+  = will_paginate @userlist, :param_name => :my_list_page
 
-.jumbotron
-  - if current_user.lists.present?
-    %h2 Add to my lists
-    .row
-      - @userlist.each do |list|
-        .col-xs-12.col-md-4
-          .lists
-            =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
-            %p #{list.name}
-            %p Capacity: #{list.capacity}
-            = render 'lists/product_partials/add_product', list: list
-    = will_paginate @userlist, :param_name => :my_list_page
-
-    %h2 Add to a list
-    .row
-      - @lists.each do |list|
-        .col-xs-12.col-md-4
-          .lists
-            =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
-            %p #{list.name}
-            %p Capacity: #{list.capacity}
-            = render 'lists/product_partials/add_product', list: list
-    = will_paginate @lists, :param_name => :lists_page
+  %h2 Add to a list
+  .row
+    - @lists.each do |list|
+      .col-xs-12.col-sm-6.col-md-4
+        .lists
+          .row
+            .col-xs-4.col-md-4
+              .list-image.center-block
+                =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
+            .col-xs-8.col-md-8
+              .list-text
+                %p #{list.name}
+                %p Capacity: #{list.capacity}
+                .product-quantity-form
+                  = render 'lists/product_partials/add_product', list: list
+  = will_paginate @lists, :param_name => :lists_page
