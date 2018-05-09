@@ -1,7 +1,7 @@
 %h3 Products in this list
 .row
   - @list.products.each do |product|
-    .col-sm-6.col-lg-4
+    .col-xs-12.col-md-4
       .lists
         =link_to product_path(product) do
           =image_tag Faker::Avatar.image('product', '100x100')

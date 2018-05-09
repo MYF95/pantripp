@@ -4,7 +4,7 @@
 .wrapper
   .row
     - @products.each do |product|
-      .col-sm-6.col-lg-4
+      .col-xs-12.col-md-4
         .product-lists
           =link_to product_path(product) do
             =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')

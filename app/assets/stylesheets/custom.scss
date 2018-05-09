@@ -45,7 +45,7 @@ h3 {
 }
 
 h1, h2, h3, h4, h5, h6{
-  font-family: "Fluid Lighter";
+  //font-family: "Fluid Lighter";
   margin: 10px 0 10px 0;
   font-weight: normal;
 }
@@ -94,7 +94,6 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /* Footer */
-/* TODO fix why footer suddenly gets stuck in the middle when resizing */
 
 .footer{
   position: fixed;
@@ -194,7 +193,6 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /* Tab content */
-/* TODO find out why the first element is not the first child*/
 
 .product-image{
   margin: 10px;

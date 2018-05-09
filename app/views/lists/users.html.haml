@@ -5,7 +5,7 @@
   %h3= "This list has #{pluralize(@list.users.count, 'user')}"
   .row
     - @list.users.each do |user|
-      .col-sm-4.col-lg-3
+      .col-xs-12.col-md-3
         .users-list
           =image_tag Faker::Avatar.image('user', '100x100')
           %p= link_to "#{user.name}", user_path(user)
