@@ -1,7 +1,7 @@
 - provide(:title, 'New list')
 - provide(:button_text, 'Create List')
 
-.jumbotron
+.wrapper
   %h2 Create new list
   = form_for(@list) do |f|
     = render 'form', f: f

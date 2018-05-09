@@ -1,7 +1,7 @@
 - provide(:title, 'Adding product to list')
 
 - if current_user.lists.present?
-  %h2 Add to my lists
+  %h2 Add product to my lists
   .row
     - @userlist.each do |list|
       .col-xs-12.col-sm-6.col-md-4
@@ -18,7 +18,7 @@
                   = render 'lists/product_partials/add_product', list: list
   = will_paginate @userlist, :param_name => :my_list_page
 
-  %h2 Add to a list
+  %h2 Add product to a list
   .row
     - @lists.each do |list|
       .col-xs-12.col-sm-6.col-md-4
