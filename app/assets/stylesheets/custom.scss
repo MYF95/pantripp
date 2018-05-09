@@ -112,7 +112,6 @@ h1, h2, h3, h4, h5, h6{
   border-style: solid;
   border-radius: 10px;
   margin: 10px;
-  height: 150px;
   position: relative;
 
   ul{
@@ -122,13 +121,15 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .list-image{
+  border-style: solid;
+  border-radius: 100px;
   text-align: left;
-  position: absolute;
-
+  width: 100px;
 }
 
-.list.text {
-  position: absolute;
+.list-text {
+  padding-top: 10px;
+  text-align: left;
 }
 
 .list-buttons{
@@ -196,6 +197,7 @@ h1, h2, h3, h4, h5, h6{
 
 .product-image{
   margin: 10px;
+  border-style: solid;
 }
 
 .tabcontent {

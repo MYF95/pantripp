@@ -4,10 +4,11 @@
 .wrapper
   .row
     - @products.each do |product|
-      .col-xs-12.col-md-4
+      .col-xs-12.col-sm-6.col-md-4
         .product-lists
-          =link_to product_path(product) do
-            =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
+          .product-image
+            =link_to product_path(product) do
+              =image_tag Faker::Avatar.image(Faker::WorldOfWarcraft.hero, '100x100', 'png', 'set4')
           %p= link_to product.name, product_path(product), id: 'product'
           - if user_signed_in?
             = link_to '+ Add to a list', products_lists_path(product), class: 'btn btn-primary overlay'

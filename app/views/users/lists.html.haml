@@ -1,5 +1,6 @@
 - provide(:title, 'Your lists')
 
 %h2 Here are all of your lists
-%h3= "You currently have #{pluralize(@user.lists.count, 'list')}"
-= render 'lists', size: '100x100'
+.wrapper
+  %h3= "You currently have #{pluralize(@user.lists.count, 'list')}"
+  = render 'lists', size: '100x100'

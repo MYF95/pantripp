@@ -1,13 +1,11 @@
 - provide(:title, 'Your profile')
 
-.jumbotron
-  %h1= "Hello #{@user.name}"
-  .container
-    %h2 Here is some basic info about you:
-    %ul.profile
-      %li= "Email: #{@user.email}"
-      %li= "Age: #{@user.age}"
+%h2= "Hello #{@user.name}"
+.wrapper
+  %h2 Here is some basic info about you:
+  %h3= "Email: #{@user.email}"
+  %h3= "Age: #{@user.age}"
 
-  - if current_user?(@user)
-    %h2= "You are currently following #{pluralize(@user.lists.count, 'list')}"
-    = render 'lists', size: '75x75'
+- if current_user?(@user)
+  %h2= "You are currently following #{pluralize(@user.lists.count, 'list')}"
+  = render 'lists', size: '100x100'

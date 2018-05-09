@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   before_action :user_getter, only: [:add_list, :delete_list]
 
   def index
-    @lists = List.paginate(page: params[:page], per_page: 9)
+    @lists = List.paginate(page: params[:page], per_page: 15)
   end
 
   def new

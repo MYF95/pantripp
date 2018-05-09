@@ -4,13 +4,16 @@
 .wrapper
   .row
     - @lists.each do |list|
-      .col-xs-12.col-md-4
+      .col-xs-12.col-sm-6.col-md-4
         .lists
-          .list-image
-            =link_to list_path(list) do
-              =image_tag Faker::Avatar.image('RIP aniki', '100x100', 'png', 'set4')
-          .list-text
-            %p= link_to list.name, list_path(list)
-            %p Capacity: #{list.capacity}
-            %p Location: #{list.location}
+          .row
+            .col-xs-4.col-md-4
+              .list-image.center-block
+                =link_to list_path(list) do
+                  =image_tag Faker::Avatar.image('RIP aniki', '100x100', 'png', 'set4')
+            .col-xs-8.col-md-8
+              .list-text
+                %p= link_to truncate(list.name, length: 20), list_path(list)
+                %p Capacity: #{list.capacity}
+                %p Location: #{list.location}
   = will_paginate

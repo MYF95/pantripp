@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     else
       # Redirects user to their lists if they try to get into another users' list
       @user = current_user
-      @users = @user.lists.paginate(page: params[:page], per_page: 9)
+      @users = @user.lists.paginate(page: params[:page], per_page: 18)
       redirect_to user_list_path(@user)
     end
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     end
 
     def userlist_getter
-      @users = @user.lists.paginate(page: params[:page], per_page: 9)
+      @users = @user.lists.paginate(page: params[:page], per_page: 18)
     end
 
     def current_user? (user)
