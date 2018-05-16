@@ -9,6 +9,6 @@ class List < ApplicationRecord
   has_many :products, through: :productlists, dependent: :destroy
 
   def amount(product)
-    return Productlist.find_by(list_id: self.id, product_id: product.id).quantity
+    productlists.find_by(product: product).quantity
   end
 end

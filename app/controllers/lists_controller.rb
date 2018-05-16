@@ -46,7 +46,7 @@ class ListsController < ApplicationController
       flash[:info] = 'List deleted'
       redirect_to lists_path
     else
-      flash[:error] = 'Something went wrong'
+      flash[:danger] = 'Something went wrong'
       redirect_to root_url
     end
   end
@@ -70,14 +70,19 @@ class ListsController < ApplicationController
         flash[:info] = "Product added to #{@list.name}"
         redirect_to list_path(@list)
       else
-        flash[:error] = 'Something went wrong'
+        flash[:danger] = 'Something went wrong'
         redirect_to root_path
       end
     else
       @productlist.quantity += params[:productlist][:quantity].to_i
-      @productlist.save
-      flash[:success] = "Amount added to #{@product.name}"
-      redirect_to list_path(@list)
+      if @productlist.save
+        flash[:success] = "Amount added to #{@product.name}"
+        redirect_to list_path(@list)
+      else
+        flash[:danger] = @productlist.errors.full_messages.to_sentence
+        redirect_to products_lists_path(@product)
+      end
+
     end
 
   end
@@ -126,7 +131,7 @@ class ListsController < ApplicationController
       flash[:info] = 'List removed from your lists'
       redirect_to user_list_path(@user)
     else
-      flash[:error] = 'Something went wrong'
+      flash[:danger] = 'Something went wrong'
       redirect_to root_path
     end
   end

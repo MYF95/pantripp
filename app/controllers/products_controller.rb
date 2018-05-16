@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
       flash[:info] = 'Product deleted'
       redirect_to products_path
     else
-      flash[:error] = 'Something went wrong'
+      flash[:danger] = 'Something went wrong'
       redirect_to @product
     end
   end
